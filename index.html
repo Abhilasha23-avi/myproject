@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
-
-
 <style>
 body {
     margin: 0;
@@ -143,6 +141,46 @@ body {
         padding: 20px;
     }
 }
+/* Mobile layout fix */
+@media (max-width: 600px) {
+
+    #mainContent {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .letter-box {
+        font-size: 16px;
+        padding: 18px;
+        margin: 15px auto;
+        width: 90%;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery img {
+        width: 80%;
+        max-width: 260px;
+        margin: 12px 0;
+    }
+
+    #openFullLetter {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    #loveScreen {
+        font-size: 38px;
+        padding: 20px;
+    }
+}
 
 </style>
 </head>
@@ -258,5 +296,6 @@ setInterval(createHeart, 400);
 
 </body>
 </html>
+
 
 
