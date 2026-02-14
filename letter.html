@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow-x: hidden;
+}
+
+/* Start screen */
+#startScreen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#openBtn {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff5e7e;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Main content */
+#mainContent {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.letter-box {
+    background: #fffaf0;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 20px;
+}
+
+.gallery img {
+    width: 200px;
+    margin: 15px;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.08) rotate(2deg);
+}
+
+/* Buttons */
+#openFullLetter, #finalReveal {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background: #ff5e7e;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+#openFullLetter:hover,
+#finalReveal:hover {
+    transform: scale(1.1);
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+}
+
+/* Full-screen love screen */
+#loveScreen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff4e7a, #ff9a9e);
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="music.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- Start Screen -->
+<div id="startScreen">
+    <button id="openBtn">Open My Letter 💌</button>
+</div>
+
+<!-- Main Apology Content -->
+<div id="mainContent">
+    <h1>My Love ❤️</h1>
+
+    <div class="letter-box">
+        I may not always say the right things,  
+        but you truly mean so much to me.  
+        I just want to make things right between us.
+    </div>
+
+    <div class="gallery">
+        <img src="photo1.jpeg">
+        <img src="photo2.jpeg">
+        <img src="photo3.jpeg">
+    </div>
+
+    <div class="letter-box">
+        I’m really sorry… and I hope we smile together again soon. ❤️
+    </div>
+
+    <div class="letter-box">
+        <button id="openFullLetter">Read my full letter 💌</button>
+    </div>
+</div>
+
+<!-- Full Letter Section -->
+<div id="fullLetter" style="display:none; padding:60px 20px; text-align:center;">
+    <div class="letter-box" style="max-width:700px; margin:auto;">
+        <h2>My Long Letter to You</h2>
+
+        <p>
+            I know I hurt you, and I truly regret it.  
+            You’re someone who means so much to me, more than I sometimes show.
+        </p>
+
+        <p>
+            Every memory with you is special to me.  
+            The laughs, the random talks, the small moments—  
+            they all stay in my heart.
+        </p>
+
+        <p>
+            I don’t want pride or ego to come between us.  
+            What we have is too precious to lose.
+        </p>
+
+        <p>
+            I’m not perfect, but I promise to try harder,  
+            to listen more, and to love you better.
+            I have one heart and that is yours.
+            You will always be my valentines. 
+            I love you baby. 
+               - Love Tannu
+        </p>
+
+        <button id="finalReveal">One last thing…</button>
+    </div>
+</div>
+
+<!-- Final Love Screen -->
+<div id="loveScreen">
+    I LOVE YOU ❤️
+</div>
+
+<script>
+document.getElementById("openBtn").onclick = function () {
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+    document.getElementById("bgMusic").play().catch(() => {});
+};
+
+document.getElementById("openFullLetter").onclick = function () {
+    document.getElementById("mainContent").style.display = "none";
+    document.getElementById("fullLetter").style.display = "block";
+    window.scrollTo(0, 0);
+};
+
+document.getElementById("finalReveal").onclick = function () {
+    document.getElementById("loveScreen").style.display = "flex";
+};
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (10 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
